@@ -79,10 +79,10 @@ namespace TressFX
 				this.triangleMeshes[i].bounds = renderingBounds;
 				#if UNITY_EDITOR
 				if (UnityEditor.SceneView.lastActiveSceneView != null && UnityEditor.SceneView.lastActiveSceneView.camera != null)
-					Graphics.DrawMesh (this.triangleMeshes [i], Vector3.zero, Quaternion.identity, this.hairMaterial, 8, UnityEditor.SceneView.lastActiveSceneView.camera, 0, new MaterialPropertyBlock(), this.fullShadows);
+					Graphics.DrawMesh (this.triangleMeshes [i], Vector3.zero, Quaternion.identity, this.hairMaterial, gameObject.layer, UnityEditor.SceneView.lastActiveSceneView.camera, 0, new MaterialPropertyBlock(), this.fullShadows);
 				#endif
 				foreach (Camera cam in Camera.allCameras)
-					Graphics.DrawMesh (this.triangleMeshes [i], Vector3.zero, Quaternion.identity, this.hairMaterial, 8, cam, 0, new MaterialPropertyBlock(), this.fullShadows);
+					Graphics.DrawMesh (this.triangleMeshes [i], Vector3.zero, Quaternion.identity, this.hairMaterial, gameObject.layer, cam, 0, new MaterialPropertyBlock(), this.fullShadows);
 			}
 			
 			// Render shadows
@@ -94,7 +94,7 @@ namespace TressFX
 				for (int i = 0; i < this.lineMeshes.Length; i++)
 				{
 					this.lineMeshes[i].bounds = renderingBounds;
-					Graphics.DrawMesh (this.lineMeshes [i], Vector3.zero, Quaternion.identity, this.shadowMaterial, 8);
+					Graphics.DrawMesh (this.lineMeshes [i], Vector3.zero, Quaternion.identity, this.shadowMaterial, gameObject.layer);
 				}
 			}
 		}
