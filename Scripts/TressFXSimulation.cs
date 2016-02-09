@@ -221,8 +221,8 @@ namespace TressFX
 		private void SimulateWind()
 		{
 			// Simulate wind
-			float wM = windMagnitude * (Mathf.Pow( Mathf.Sin(Time.frameCount*0.05f), 2.0f ) + 0.5f);
-			
+			float wM = windMagnitude / transform.lossyScale.x * (Mathf.Pow(Mathf.Sin(Time.frameCount * 0.05f), 2.0f) + 0.5f);
+
 			Vector3 windDirN = this.windDirection.normalized;
 			
 			Vector3 XAxis = new Vector3(1,0,0);
