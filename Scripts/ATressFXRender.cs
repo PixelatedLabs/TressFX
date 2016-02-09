@@ -62,9 +62,11 @@ namespace TressFX
 			
 			// Initialize shadow material
 			this.shadowMaterial = new Material (this.shadowShader);
-			
+
 			// Create render bounds
-			this.renderingBounds = new Bounds (this.master.hairData.m_bSphere.center, new Vector3(this.master.hairData.m_bSphere.radius, this.master.hairData.m_bSphere.radius, this.master.hairData.m_bSphere.radius));
+			Vector3 center = this.master.hairData.m_bSphere.center;
+			center.Scale(transform.lossyScale);
+            this.renderingBounds = new Bounds (center, new Vector3(this.master.hairData.m_bSphere.radius * transform.lossyScale.x, this.master.hairData.m_bSphere.radius * transform.lossyScale.y, this.master.hairData.m_bSphere.radius * transform.lossyScale.z));
 
 		}
 		
